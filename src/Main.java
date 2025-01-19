@@ -13,6 +13,9 @@ public class Main{
 		System.out.println("Top Down approach solution" + lcs.topDownLCS(input1, input2, m,n));
 		LongestCommonSubstring lcSubstring = new LongestCommonSubstring();
 		System.out.println("DP Solution for Longest Common Substring" + lcSubstring.lcsTopDown(input1, input2, input1.length(), input2.length()));
+
+		PrintLCS lcsPrint = new PrintLCS(input1, input2, input1.length(), input2.length());
+		// System.out.println("DP solution for printing the LCS"+lcsPrint.)
 		
 	}
 }
