@@ -4,7 +4,7 @@ class LongestCommonSequence{
 
 
     private int[][] memoize;
-
+    private int[][] dp;
     //constructor
     // public LongestCommonSequence(int rows, int cols){
     //     memoize = new int[rows, cols];
@@ -61,6 +61,38 @@ class LongestCommonSequence{
         }else{
             return Math.max(memoizeHelper(X,Y, m-1 , n) , memoizeHelper(X,Y,m, n-1));
         }
+    }
+
+
+    // we initialize with -1 in bottom up because we are checking if the value is present or not in the table
+    //but we are initialiaing with the actual possible vlaue of the solution in the top down approach
+
+    public int topDownLCS(String X, String Y, int m, int n){
+        //initialization of the array
+        dp = new int[m+1][n+1];
+        for(int i =0;i<=m; i++){
+            for(int j=0; j<=n ;j++){
+                dp[i][j] = 0;
+            }
+        }
+        //In DP we convert the recursice approach from Memeoization to the iterative approach
+
+
+        for(int i=1; i<=m;i++){
+            for(int j=1;j<=n; j++){
+                if(m==0  || n==0){
+                    return 0;
+                }
+
+                if(X.charAt(i-1) ==  Y.charAt(j-1)){
+                    dp[i][j] = 1 + dp[i-1][j-1];
+                }else{
+                    dp[i][j] = Math.max(dp[i-1][j] , dp[i][j-1]);
+                }
+            }
+        }
+
+        return dp[m][n];
     }
 
 }
