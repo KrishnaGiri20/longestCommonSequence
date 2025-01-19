@@ -80,10 +80,6 @@ class LongestCommonSequence{
 
         for(int i=1; i<=m;i++){
             for(int j=1;j<=n; j++){
-                if(m==0  || n==0){
-                    return 0;
-                }
-
                 if(X.charAt(i-1) ==  Y.charAt(j-1)){
                     dp[i][j] = 1 + dp[i-1][j-1];
                 }else{
